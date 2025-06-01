@@ -17,6 +17,7 @@ def predict():
 
     # Train model & get data
     model, x, y_true, _, _ = predictor.train_and_evaluate()
+    x, y, _, _ = predictor.data.get_loaders()
 
     # Predict
     model.eval()
@@ -26,10 +27,12 @@ def predict():
     # Tính các chỉ số sai số
     metrics = compute_metrics(y_true.cpu().numpy(), y_pred.numpy())
 
+    for real, pred in zip(y[:10], y_pred[:10]):
+            print(f"Real: {real.item():.4f}, Predicted: {pred.item():.4f}")
+            
     print("\n📊 Evaluation Metrics:")
     for k, v in metrics.items():
         print(f"{k}: {v:.4f}")
-
     return y_true.cpu(), y_pred
 
 if __name__ == "__main__":
