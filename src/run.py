@@ -32,8 +32,15 @@ class RunFNN:
         model = self.build_model()
         criterion = nn.MSELoss()
         optimizer = optim.Adam(model.parameters(), self.lr)
-        trainer = Trainer(model, criterion, optimizer)
-        trainer.train(dataloader, self.epochs, self.device)
+        trainer = Trainer(
+            model,
+            criterion,
+            optimizer,
+            dataloader,
+            self.epochs,
+            self.device,
+        )
+        trainer.train()
         model.eval()
         with torch.no_grad():
             predictions = model(x).cpu().numpy()
