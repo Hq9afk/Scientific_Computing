@@ -1,6 +1,6 @@
 # Installation
 
-1. Download python
+1. (https://www.python.org/downloads/)[Download python]
 
 2. Create virtual environment
 
@@ -12,7 +12,7 @@
 3. Install packages
 
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cu128
    ```
 
 4. Run

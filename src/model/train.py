@@ -50,12 +50,18 @@ class Trainer:
             val_loss = 0.0
             with torch.no_grad():
                 for val_inputs, val_targets in val_loader:
-                    val_inputs, val_targets = val_inputs.to(self.device), val_targets.to(self.device)
+                    val_inputs, val_targets = (
+                        val_inputs.to(self.device),
+                        val_targets.to(self.device),
+                    )
                     val_outputs = self.model(val_inputs)
                     loss = self.criterion(val_outputs, val_targets)
                     val_loss += loss.item() * val_inputs.size(0)
             val_loss /= len(val_loader.dataset)
             val_losses.append(val_loss)
-            if epoch % 100 == 0 or epoch == self.epochs - 1:
-                print(f"Epoch {epoch + 1}/{self.epochs}, Train Loss: {epoch_loss:.4f}, Val Loss: {val_loss:.4f}")
+            if (epoch + 1) % 100 == 0:
+                print(
+                    f"Epoch {epoch + 1}/{self.epochs}, Train Loss: {epoch_loss:.4f}, Val Loss: {val_loss:.4f}"
+                )
+
         return train_losses, val_losses
