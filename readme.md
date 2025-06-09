@@ -20,3 +20,8 @@
    ```bash
    python main.py
    ```
+
+5. Evaluate
+   ```bash
+   python predictions_and_errors.ppy
+   ```
