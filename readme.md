@@ -1,6 +1,6 @@
 # Installation
 
-1. (https://www.python.org/downloads/)[Download python]
+1. [Download python](https://www.python.org/downloads/)
 
 2. Create virtual environment
 
